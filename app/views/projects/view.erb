@@ -1,0 +1,28 @@
+<h1><%= @project.name %></h1>
+<p><%= @project.description %></p>
+<% if @contributors %>
+  <h2>Contributors</h2>
+  <ul>
+    <% @contributors.each do |contributor| %>
+    <li>
+      <%= contributor.first_name %> <%= contributor.last_name %>
+        <% if contributor.email != nil %>
+          (<a href="mailto:<%= contributor.email %>"><%= contributor.email %></a>)
+        <% end %>
+    </li>
+    <% end %>
+  </ul>
+<% end %>
+<% if @tasks %>
+  <h2>Tasks</h2>
+  <ul>
+    <% @tasks.each do |task| %>
+      <li>
+        <%= task.name %>
+        <% if task.user_id != nil %>
+           <p>Assigned to: <%= task.user.first_name %> <%= task.user.last_name %></p>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>

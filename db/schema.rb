@@ -29,14 +29,15 @@ ActiveRecord::Schema.define(version: 20170408193644) do
   end
 
   create_table "tasks", force: :cascade do |t|
-    t.string   "name",             null: false
+    t.string   "name",        null: false
     t.string   "description"
     t.datetime "due_date"
-    t.integer  "assigned_user_id"
+    t.integer  "user_id"
     t.integer  "project_id"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.index ["project_id"], name: "index_tasks_on_project_id", using: :btree
+    t.index ["user_id"], name: "index_tasks_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
